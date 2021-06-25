@@ -1,0 +1,20 @@
+{
+  "name": "Uniswap-Box",
+  "version": "0.0.1",
+  "keywords": [
+    "plancker",
+    "uniswap-box",
+    "strategy"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PlanckerLabs/Uniswap-Box"
+  },
+  "engines": {
+    "node": ">=10"
+  },
+  "dependencies": {
+    "@truffle/hdwallet-provider": "^1.4.1",
+    "@uniswap/v3-core": "^1.0.0"
+  }
+}
