@@ -91,7 +91,7 @@ ETH下跌同理。只是挂单金额计算公式为ETH_amount/(sell_order_amount
 
 #### 3、停止网格
 
-用户点击停止按钮，网格交易将会自动终止，pending中的交易将被取消，当没有pending交易时，网格交易即可完成停止的过程。
+用户点击停止按钮，网格交易将会自动终止，用户的ETH会被卖成USDT，pending中的交易将被取消，当没有pending交易时，网格交易即可完成停止的过程。withdraw时，用户只会提取单币USDT
 
 
 
