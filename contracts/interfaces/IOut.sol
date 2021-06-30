@@ -10,6 +10,7 @@ interface IOut {
 
 	// 策略方案结构体
 	struct Strategy {
+		address to;
 		address tokenA;		//投入币种A
 		address tokenB;		//交换币种B
 		uint24 fee;			//费率(分别为500,3000,10000)

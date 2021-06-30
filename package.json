@@ -14,6 +14,7 @@
     "node": ">=10"
   },
   "dependencies": {
+    "@openzeppelin/contracts": "^4.1.0",
     "@truffle/hdwallet-provider": "^1.4.1",
     "@uniswap/v3-core": "^1.0.0",
     "solidity-coverage": "^0.7.12",

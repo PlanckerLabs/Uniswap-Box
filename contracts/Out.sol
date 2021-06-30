@@ -13,7 +13,7 @@ contract Out is IOut, ISwapRouter {
     address public SWAP_ROUTER;
     address public QUOTER_ROUTER;
 
-    constructor(address V3Swap_Router,address V3Quoter_Router){
+    constructor(address V3Swap_Router, address V3Quoter_Router) {
         SWAP_ROUTER = V3Swap_Router;
         QUOTER_ROUTER = V3Quoter_Router;
     }
@@ -36,6 +36,7 @@ contract Out is IOut, ISwapRouter {
         TransferHelper.safeTransferFrom(tokenA, to, address(this), amount);
         (uint256 amountIn, uint256 amountOut) = initial(
             Strategy({
+                to:to,
                 tokenA: tokenA,
                 tokenB: tokenB,
                 fee: fee,
@@ -48,6 +49,7 @@ contract Out is IOut, ISwapRouter {
             })
         );
         strategy[id] = Strategy({
+            to:to,
             tokenA: tokenA,
             tokenB: tokenB,
             fee: fee,
@@ -303,8 +305,8 @@ contract Out is IOut, ISwapRouter {
         TickSingle[] memory tickINfo = new TickSingle[](
             strategyInfos.tickCount
         );
-        for (uint32 j; j <= strategyInfos.tickCount; j++) {
-            tickINfo[j] = tickSingle[strategyId][j];
+        for (uint32 j = 1; j <= strategyInfos.tickCount; j++) {
+            tickINfo[j-1] = tickSingle[strategyId][j];
         }
         return tickINfo;
     }
