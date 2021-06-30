@@ -13,6 +13,10 @@
   "engines": {
     "node": ">=10"
   },
+  "scripts": {
+    "compile": "truffle compile",
+    "remixd": "remixd -s . --remix-ide https://remix.ethereum.org"
+  },
   "dependencies": {
     "@openzeppelin/contracts": "^4.1.0",
     "@truffle/hdwallet-provider": "^1.4.1",

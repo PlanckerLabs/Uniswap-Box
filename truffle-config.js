@@ -21,8 +21,8 @@
 const HDWalletProvider = require('@truffle/hdwallet-provider');
 // const infuraKey = "fj4jll3k.....";
 //
-// const fs = require('fs');
-// const mnemonic = fs.readFileSync(".secret").toString().trim();
+const fs = require('fs');
+const mnemonic = fs.readFileSync(".secret").toString().trim();
 
 module.exports = {
   /**
@@ -47,6 +47,17 @@ module.exports = {
 	 port: 8545,			// Standard Ethereum port (default: none)
 	 network_id: "*",	   // Any network (default: none)
 	},
+    rinkeby: {
+		provider: function () {
+		  return new HDWalletProvider(
+			mnemonic,
+			`https://rinkeby.infura.io/v3/${process.env.INFURA_API_KEY}`,
+		  )
+		},
+		network_id: 4,
+		gas: 6500000, // default = 4712388
+		gasPrice: 10000000000, // default = 10 gwei
+	  },	
 	// Another network with more advanced options...
 	// advanced: {
 	// port: 8777,			 // Custom port
@@ -73,10 +84,7 @@ module.exports = {
 	// production: true	// Treats this network as if it was a public net. (default: false)
 	// }
   },
-
   plugins: ["solidity-coverage", "truffle-contract-size"],
-
-
   // Set default mocha options here, use special reporters etc.
   mocha: {
 	// timeout: 100000
