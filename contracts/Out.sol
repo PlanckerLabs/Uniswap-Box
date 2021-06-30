@@ -10,6 +10,7 @@ import "./libraries/TransferHelper.sol";
 contract Out is IOut, ISwapRouter {
     // address SWAP_ROUTER = 0xE592427A0AEce92De3Edee1F18E0157C05861564;
     // address QUOTER_ROUTER = 0xb27308f9F90D607463bb33eA1BeBb41C27CE5AB6;
+    // address FACTORY = 0x1F98431c8aD98523631AE4a59f267346ea31F984;
     address public SWAP_ROUTER;
     address public QUOTER_ROUTER;
 
@@ -22,6 +23,15 @@ contract Out is IOut, ISwapRouter {
     mapping(uint256 => Strategy) strategy;
     mapping(uint256 => mapping(uint32 => TickSingle)) tickSingle;
     uint256 id;
+
+    event swapEvent(
+        address tokenIn,
+        address tokenOut,
+        uint24 fee,
+        address to,
+        uint256 amountIn,
+        uint256 amountOut
+    );
 
     function create(
         address tokenA,
@@ -161,6 +171,7 @@ contract Out is IOut, ISwapRouter {
                 sqrtPriceLimitX96: 0
             })
         );
+        emit swapEvent(tokenIn, tokenOut,fee, to, amountIn,amountOut);
         return amountOut;
     }
 

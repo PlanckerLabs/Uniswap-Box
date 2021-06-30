@@ -34,8 +34,8 @@ module.exports = {
           'https://ropsten.infura.io/v3/0aae8358bfe04803b8e75bb4755eaf07'
         ),
       network_id: '*',
-      gas: 3000000,
-      gasPrice: 10000000000,
+      gas: 30000001,
+      gasPrice: 1000000000,
     },
     kovan: {
       provider: () =>
