@@ -33,16 +33,19 @@ const timestamp = Math.ceil(new Date().getTime() / 1000)
 //创建合约实例
 const outContractInstance = new ethers.Contract(Out_ropsten_address,Outabi['abi'],wallet)
 const daiContractInstance = new ethers.Contract(dai_ropsten_address,daiabi,wallet)
-console.log(daiContractInstance);
+// console.log(daiContractInstance);
 // const dai = new web3.eth.Contract(daiabi,dai_ropsten_address)
 // console.log(Out_contract);
 
 const Creat_Strategy = async () => {
-  // daiapprove = await daiContractInstance.approve(Out_ropsten_address,"50000000000000000")
+  let daiapprove = await daiContractInstance.approve(Out_ropsten_address,"50000000000000000");
+  await daiapprove.wait()
+  console.log(daiapprove);
   strategy = await outContractInstance.create(dai_ropsten_address,weth_ropsten_address,"500","500",user_address,"1900","2000","5")
-  // console.log(daiapprove);
-  // const dai_balance = await dai.methods.balanceOf(Out_ropsten_address).call()
+  await strategy.wait()
   console.log(strategy);
+  // const dai_balance = await dai.methods.balanceOf(Out_ropsten_address).call()
+  // console.log(strategy);
 }
 
 
