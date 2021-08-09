@@ -48,6 +48,16 @@ contract Out is IOut, ISwapRouter, INonfungiblePositionManager {
         uint256 amountOut
     );
 
+    event depositMoney(
+        address to,
+        uint256 amountIn
+    );
+
+    event withdrawMoney(
+        address to,
+        uint256 amountA
+    );
+
     function create(
         address tokenA,
         address tokenB,
@@ -85,6 +95,8 @@ contract Out is IOut, ISwapRouter, INonfungiblePositionManager {
         User storage user = userInfo[to];
         user.strategyIds.push(id);
         id++;
+
+        emit depositMoney(to,amount);
     }
 
     // 创建新的策略时，对策略进行初始操作
@@ -253,6 +265,9 @@ contract Out is IOut, ISwapRouter, INonfungiblePositionManager {
             stg.amountB = 0;
         }
         TransferHelper.safeTransfer(token, to, amountA);
+
+        emit withdrawMoney(to,msg.value);
+
     }
 
     function swap(
@@ -662,6 +677,7 @@ contract Out is IOut, ISwapRouter, INonfungiblePositionManager {
             })
         );
     }
+    
 
     function collect(CollectParams memory params)
         public
@@ -676,4 +692,9 @@ contract Out is IOut, ISwapRouter, INonfungiblePositionManager {
 
     // 移除流动性
     function burn(uint256 tokenId) external payable override {}
+
+    // 计算TVL
+    function tvl() external{
+        
+    }
 }

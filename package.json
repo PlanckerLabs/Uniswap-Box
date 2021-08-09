@@ -1,33 +1,20 @@
 {
-  "name": "Uniswap-Box",
-  "version": "0.0.1",
-  "keywords": [
-    "plancker",
-    "uniswap-box",
-    "strategy"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/PlanckerLabs/Uniswap-Box"
-  },
-  "engines": {
-    "node": ">=10"
-  },
-  "scripts": {
-    "compile": "truffle compile",
-    "remixd": "remixd -s . --remix-ide https://remix.ethereum.org"
+  "name": "hardhat-project",
+  "devDependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.0.2",
+    "@nomiclabs/hardhat-waffle": "^2.0.1",
+    "chai": "^4.3.4",
+    "ethereum-waffle": "^3.4.0",
+    "ethers": "^5.4.2",
+    "hardhat": "^2.5.0"
   },
   "dependencies": {
-    "@openzeppelin/contracts": "^4.1.0",
-    "@truffle/hdwallet-provider": "^1.4.1",
+    "@chainlink/contracts": "^0.2.1",
+    "@openzeppelin/contracts": "^4.2.0",
     "@uniswap/v3-core": "^1.0.0",
+    "bignumber": "^1.1.0",
     "bignumber.js": "^9.0.1",
-    "solidity-coverage": "^0.7.12",
-    "truffle": "5.1.49",
-    "truffle-contract-size": "^2.0.1",
-    "truffle-hdwallet-provider": "^1.0.17",
-    "typechain": "4.0.0",
-    "typescript": "^4.0.2",
-    "web3": "^1.3.0"
+    "chainlink": "^0.8.2",
+    "dotenv": "^10.0.0"
   }
 }

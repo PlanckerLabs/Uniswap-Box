@@ -50,7 +50,11 @@ library TransferHelper {
             )
         );
         require(
-            success && (data.length == 0 || abi.decode(data, (bool))),
+            success,
+            "1");
+            
+        require(
+             (data.length == 0 || abi.decode(data, (bool))),
             "TransferHelper: TRANSFER_FROM_FAILED"
         );
     }
